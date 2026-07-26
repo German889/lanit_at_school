@@ -5,7 +5,7 @@ public class Kotik {
     public Kotik(){
         count++;
     }
-    public Kotik(String name, String voice, int satiety, float weight){
+    public Kotik(String name, String voice, int satiety, int weight){
         count++;
         this.name = name;
         this.voice = voice;
@@ -37,18 +37,18 @@ public class Kotik {
         this.satiety = satiety;
     }
 
-    public float getWeight() {
+    public int getWeight() {
         return weight;
     }
 
-    public void setWeight(float weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 
     private String name;
     private String voice;
     private int satiety = 0;
-    private float weight;
+    private int weight;
     private static int count = 0;
     private static final int METHODS = 5;
 

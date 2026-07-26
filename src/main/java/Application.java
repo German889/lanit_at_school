@@ -2,13 +2,13 @@ import animals.Kotik;
 
 public class Application {
     public static void main(String[] args) {
-        Kotik black = new Kotik("black","meoooow",2,3.6f);
+        Kotik black = new Kotik("black","meoooow",2,3);
 
         Kotik white = new Kotik();
         white.setName("white");
         white.setSatiety(3);
         white.setVoice("meeeeauuw");
-        white.setWeight(2.8f);
+        white.setWeight(2);
         String[] actions = white.liveAnotherDay();
         for(String act : actions){
             System.out.println(act);
