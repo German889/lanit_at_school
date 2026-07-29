@@ -1,6 +1,9 @@
 package animals;
 
-public class Kotik {
+import food.Food;
+import food.Meat;
+
+public class Kotik extends Carnivorous implements Voice, Run{
 
     public Kotik(){
         count++;
@@ -46,7 +49,7 @@ public class Kotik {
     }
 
     private String name;
-    private String voice;
+    private String voice = "Мяу";
     private int satiety = 0;
     private int weight;
     private static int count = 0;
@@ -152,5 +155,17 @@ public class Kotik {
     }
     public void eat(){
         eat(10, "Вискас");
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Бегаю");
+    }
+
+    @Override
+    public void eat(Food food) {
+        if(food instanceof Meat){
+            satiety += Meat.getEnergy();
+        }
     }
 }
