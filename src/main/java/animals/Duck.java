@@ -3,9 +3,8 @@ package animals;
 import food.Food;
 import food.Grass;
 
-public class Duck extends Herbivore implements Voice, Fly, Swim{
+public class Duck extends Herbivore implements Voice, Fly, Swim, Run{
 
-    private int satiety = 0;
     public int getSatiety() {
         return satiety;
     }
@@ -27,8 +26,14 @@ public class Duck extends Herbivore implements Voice, Fly, Swim{
 
     @Override
     public void eat(Food food) {
+        Grass grass = new Grass();
         if(food instanceof Grass){
-            satiety += Grass.getEnergy();
+            satiety += grass.getEnergy();
         }
+    }
+
+    @Override
+    public void run() {
+        System.out.println("бегаю как утка");
     }
 }

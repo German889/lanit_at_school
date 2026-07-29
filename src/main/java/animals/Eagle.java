@@ -5,7 +5,6 @@ import food.Meat;
 
 public class Eagle extends Carnivorous implements Voice, Fly{
 
-    private int satiety = 0;
     public int getSatiety() {
         return satiety;
     }
@@ -21,8 +20,9 @@ public class Eagle extends Carnivorous implements Voice, Fly{
 
     @Override
     public void eat(Food food) {
+        Meat meat = new Meat();
         if(food instanceof Meat){
-            satiety += Meat.getEnergy();
+            satiety += meat.getEnergy();
         }
     }
 }

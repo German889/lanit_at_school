@@ -5,7 +5,6 @@ import food.Grass;
 
 public class Cow extends Herbivore implements Run, Voice{
 
-    private int satiety = 0;
     public int getSatiety() {
         return satiety;
     }
@@ -21,8 +20,9 @@ public class Cow extends Herbivore implements Run, Voice{
 
     @Override
     public void eat(Food food) {
+        Grass grass = new Grass();
         if(food instanceof Grass){
-            satiety += Grass.getEnergy();
+            satiety += grass.getEnergy();
         }
     }
 }

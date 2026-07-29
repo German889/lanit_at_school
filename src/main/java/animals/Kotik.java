@@ -50,7 +50,6 @@ public class Kotik extends Carnivorous implements Voice, Run{
 
     private String name;
     private String voice = "Мяу";
-    private int satiety = 0;
     private int weight;
     private static int count = 0;
     private static final int METHODS = 5;
@@ -164,8 +163,9 @@ public class Kotik extends Carnivorous implements Voice, Run{
 
     @Override
     public void eat(Food food) {
+        Meat meat = new Meat();
         if(food instanceof Meat){
-            satiety += Meat.getEnergy();
+            satiety += meat.getEnergy();
         }
     }
 }

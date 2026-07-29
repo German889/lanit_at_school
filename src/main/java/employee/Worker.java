@@ -8,8 +8,8 @@ public class Worker {
     public void feed(Animal animal, Food food){
         animal.eat(food);
     }
-    public void getVoice(Animal animal){
+    public void getVoice(Voice animal){
         if(animal instanceof Voice)
-            System.out.println(((Voice) animal).getVoice());
+            System.out.println(animal.getVoice());
     }
 }

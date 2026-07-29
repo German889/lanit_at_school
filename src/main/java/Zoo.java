@@ -35,16 +35,16 @@ public class Zoo {
                 } else {
                     worker.feed(animal, new Meat());
                 }
-                worker.getVoice(animal);
+                worker.getVoice((Voice) animal);
 
             }
         }
-        Swim[] swimmable = createPound();
+        Swim[] swimmable = createPond();
         for(int i=0; i<swimmable.length; i++){
             swimmable[i].swim();
         }
     }
-    public static Swim[] createPound(){
+    public static Swim[] createPond(){
         Swim[] swimmable = new Swim[10];
         for (int i=0; i<10; i++){
             if(i%2==0){

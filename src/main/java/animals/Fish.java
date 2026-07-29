@@ -4,7 +4,6 @@ import food.Food;
 import food.Grass;
 
 public class Fish extends Herbivore implements Swim{
-    private int satiety = 0;
     public int getSatiety() {
         return satiety;
     }
@@ -16,8 +15,9 @@ public class Fish extends Herbivore implements Swim{
 
     @Override
     public void eat(Food food) {
+        Grass grass = new Grass();
         if(food instanceof Grass){
-            satiety += Grass.getEnergy();
+            satiety += grass.getEnergy();
         }
     }
 }
