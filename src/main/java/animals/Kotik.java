@@ -2,11 +2,17 @@ package animals;
 
 import food.Food;
 import food.Meat;
+import model.Size;
 
 public class Kotik extends Carnivorous implements Voice, Run{
 
+    private final Size catSize = Size.SMALL;
+
     public Kotik(){
         count++;
+    }
+    public Kotik(String name){
+        super(name);
     }
     public Kotik(String name, String voice, int satiety, int weight){
         count++;
@@ -18,6 +24,10 @@ public class Kotik extends Carnivorous implements Voice, Run{
 
     public String getName() {
         return name;
+    }
+
+    public Size getSize(){
+        return catSize;
     }
 
     public void setName(String name) {

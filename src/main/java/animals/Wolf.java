@@ -2,11 +2,21 @@ package animals;
 
 import food.Food;
 import food.Meat;
+import model.Size;
 
 public class Wolf extends Carnivorous implements Voice, Run{
+    public Wolf(){}
+    public Wolf(String name){
+        super(name);
+    }
 
+    private final Size wolfSize = Size.LARGE;
     public int getSatiety() {
         return satiety;
+    }
+
+    public Size getSize(){
+        return wolfSize;
     }
 
     @Override

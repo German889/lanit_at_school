@@ -2,8 +2,19 @@ package animals;
 
 import food.Food;
 import food.Grass;
+import model.Size;
 
 public class Duck extends Herbivore implements Voice, Fly, Swim, Run{
+    public Duck(){}
+    public Duck(String name){
+        super(name);
+    }
+
+    private final Size duckSize = Size.SMALL;
+
+    public Size getSize(){
+        return duckSize;
+    }
 
     public int getSatiety() {
         return satiety;

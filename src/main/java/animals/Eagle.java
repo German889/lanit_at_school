@@ -2,11 +2,19 @@ package animals;
 
 import food.Food;
 import food.Meat;
+import model.Size;
 
 public class Eagle extends Carnivorous implements Voice, Fly{
-
+    public Eagle(){}
+    public Eagle(String name){
+        super(name);
+    }
+    private final Size eagleSize = Size.MEDIUM;
     public int getSatiety() {
         return satiety;
+    }
+    public Size getSize(){
+        return eagleSize;
     }
     @Override
     public void fly() {

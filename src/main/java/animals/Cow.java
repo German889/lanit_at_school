@@ -2,9 +2,17 @@ package animals;
 
 import food.Food;
 import food.Grass;
+import model.Size;
 
 public class Cow extends Herbivore implements Run, Voice{
-
+    public Cow(){}
+    public Cow(String name){
+        super(name);
+    }
+    private final Size cowSize = Size.LARGE;
+    public Size getSize(){
+        return cowSize;
+    }
     public int getSatiety() {
         return satiety;
     }
