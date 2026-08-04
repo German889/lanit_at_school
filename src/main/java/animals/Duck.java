@@ -3,6 +3,7 @@ package animals;
 import food.Food;
 import food.Grass;
 import model.Size;
+import model.WrongFoodException;
 
 public class Duck extends Herbivore implements Voice, Fly, Swim, Run{
     public Duck(){}
@@ -10,6 +11,9 @@ public class Duck extends Herbivore implements Voice, Fly, Swim, Run{
         super(name);
     }
 
+    public String getName(){
+        return super.getName();
+    }
     private final Size duckSize = Size.SMALL;
 
     public Size getSize(){
@@ -36,10 +40,12 @@ public class Duck extends Herbivore implements Voice, Fly, Swim, Run{
     }
 
     @Override
-    public void eat(Food food) {
+    public void eat(Food food) throws WrongFoodException {
         Grass grass = new Grass();
         if(food instanceof Grass){
             satiety += grass.getEnergy();
+        } else {
+            throw new WrongFoodException("wrong food duck");
         }
     }
 

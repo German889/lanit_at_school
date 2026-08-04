@@ -3,6 +3,7 @@ package animals;
 import food.Food;
 import food.Meat;
 import model.Size;
+import model.WrongFoodException;
 
 public class Kotik extends Carnivorous implements Voice, Run{
 
@@ -14,24 +15,19 @@ public class Kotik extends Carnivorous implements Voice, Run{
     public Kotik(String name){
         super(name);
     }
-    public Kotik(String name, String voice, int satiety, int weight){
+    public Kotik(String voice, int satiety, int weight){
         count++;
-        this.name = name;
         this.voice = voice;
         this.satiety = satiety;
         this.weight = weight;
     }
 
     public String getName() {
-        return name;
+        return super.getName();
     }
 
     public Size getSize(){
         return catSize;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getVoice() {
@@ -58,7 +54,6 @@ public class Kotik extends Carnivorous implements Voice, Run{
         this.weight = weight;
     }
 
-    private String name;
     private String voice = "Мяу";
     private int weight;
     private static int count = 0;
@@ -172,10 +167,12 @@ public class Kotik extends Carnivorous implements Voice, Run{
     }
 
     @Override
-    public void eat(Food food) {
+    public void eat(Food food) throws WrongFoodException {
         Meat meat = new Meat();
         if(food instanceof Meat){
             satiety += meat.getEnergy();
+        } else {
+            throw new WrongFoodException("wrong food cat");
         }
     }
 }

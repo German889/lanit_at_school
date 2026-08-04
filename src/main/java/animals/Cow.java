@@ -3,11 +3,16 @@ package animals;
 import food.Food;
 import food.Grass;
 import model.Size;
+import model.WrongFoodException;
 
 public class Cow extends Herbivore implements Run, Voice{
     public Cow(){}
     public Cow(String name){
         super(name);
+    }
+
+    public String getName(){
+        return super.getName();
     }
     private final Size cowSize = Size.LARGE;
     public Size getSize(){
@@ -27,10 +32,12 @@ public class Cow extends Herbivore implements Run, Voice{
     }
 
     @Override
-    public void eat(Food food) {
+    public void eat(Food food) throws WrongFoodException {
         Grass grass = new Grass();
         if(food instanceof Grass){
             satiety += grass.getEnergy();
+        } else {
+            throw new WrongFoodException("wrong food");
         }
     }
 }

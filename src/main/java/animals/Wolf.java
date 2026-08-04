@@ -3,6 +3,7 @@ package animals;
 import food.Food;
 import food.Meat;
 import model.Size;
+import model.WrongFoodException;
 
 public class Wolf extends Carnivorous implements Voice, Run{
     public Wolf(){}
@@ -13,6 +14,9 @@ public class Wolf extends Carnivorous implements Voice, Run{
     private final Size wolfSize = Size.LARGE;
     public int getSatiety() {
         return satiety;
+    }
+    public String getName(){
+        return super.getName();
     }
 
     public Size getSize(){
@@ -30,10 +34,12 @@ public class Wolf extends Carnivorous implements Voice, Run{
     }
 
     @Override
-    public void eat(Food food) {
+    public void eat(Food food) throws WrongFoodException {
         Meat meat = new Meat();
         if(food instanceof Meat){
             satiety += meat.getEnergy();
+        } else {
+            throw new WrongFoodException("wrong food wolf");
         }
     }
 }

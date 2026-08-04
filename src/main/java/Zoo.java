@@ -3,31 +3,35 @@ import employee.Worker;
 import food.Food;
 import food.Grass;
 import food.Meat;
+import model.Aviary;
+import model.Size;
 
 public class Zoo {
+    private static Aviary<Carnivorous> carnivorousAviary = new Aviary<>(Size.SMALL);
+    private static Aviary<Herbivore> herbivoreAviary = new Aviary<>(Size.LARGE);
     public static void main(String[] args) {
         Worker worker = new Worker();
         for(int i=0; i<6; i++){
             for(int j=0; j<2; j++){
-                Animal animal = new Kotik();
+                Animal animal = new Kotik("arcadiy");
                 switch (i){
                     case 0:
-                        animal = new Cow();
+                        animal = new Cow("marussia");
                         break;
                     case 1:
-                        animal = new Duck();
+                        animal = new Duck("kveen");
                         break;
                     case 2:
-                        animal = new Eagle();
+                        animal = new Eagle("patriot");
                         break;
                     case 3:
-                        animal = new Fish();
+                        animal = new Fish("gold");
                         break;
                     case 4:
-                        animal = new Kotik();
+                        animal = new Kotik("white");
                         break;
                     case 5:
-                        animal = new Wolf();
+                        animal = new Wolf("akela");
                         break;
                 }
                 if (j==0) {
@@ -35,7 +39,8 @@ public class Zoo {
                 } else {
                     worker.feed(animal, new Meat());
                 }
-                worker.getVoice((Voice) animal);
+                if(animal instanceof Voice)
+                    worker.getVoice((Voice) animal);
 
             }
         }
@@ -43,14 +48,27 @@ public class Zoo {
         for(int i=0; i<swimmable.length; i++){
             swimmable[i].swim();
         }
+
+        carnivorousAviary.addAnimal(new Kotik("white"));
+
+        herbivoreAviary.addAnimal(new Cow("burenka"));
+
     }
+
+    private static void fillCarnivorousAviary(){
+        
+    }
+    private static void fillHerbivoreAviary(){
+
+    }
+
     public static Swim[] createPond(){
         Swim[] swimmable = new Swim[10];
         for (int i=0; i<10; i++){
             if(i%2==0){
-                swimmable[i] = new Duck();
+                swimmable[i] = new Duck("kfldvf");
             } else{
-                swimmable[i] = new Fish();
+                swimmable[i] = new Fish("dklschld");
             }
         }
         return swimmable;
