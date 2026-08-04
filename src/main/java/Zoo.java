@@ -56,16 +56,22 @@ public class Zoo {
     }
 
     private static void fillCarnivorousAviary(){
-        
+        for(int i=0; i<5; i++){
+            Kotik cat = new Kotik("barsik_"+i);
+            carnivorousAviary.addAnimal(cat);
+        }
     }
     private static void fillHerbivoreAviary(){
-
+        for(int i=0; i<5; i++){
+            Cow cow = new Cow("burenka_"+i);
+            herbivoreAviary.addAnimal(cow);
+        }
     }
     private static Carnivorous getCarnivorous(String name){
-        return null;
+        return carnivorousAviary.getAnimal(name);
     }
     private static Herbivore getHerbivore(String name){
-        return null;
+        return herbivoreAviary.getAnimal(name);
     }
 
     public static Swim[] createPond(){
