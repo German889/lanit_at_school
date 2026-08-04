@@ -1,14 +1,13 @@
 import animals.*;
 import employee.Worker;
-import food.Food;
 import food.Grass;
 import food.Meat;
 import model.Aviary;
 import model.Size;
 
 public class Zoo {
-    private static Aviary<Carnivorous> carnivorousAviary = new Aviary<>(Size.SMALL);
-    private static Aviary<Herbivore> herbivoreAviary = new Aviary<>(Size.LARGE);
+    private final static Aviary<Carnivorous> carnivorousAviary = new Aviary<>(Size.SMALL);
+    private final static Aviary<Herbivore> herbivoreAviary = new Aviary<>(Size.LARGE);
     public static void main(String[] args) {
         Worker worker = new Worker();
         for(int i=0; i<6; i++){
@@ -52,6 +51,10 @@ public class Zoo {
         carnivorousAviary.addAnimal(new Kotik("white"));
 
         herbivoreAviary.addAnimal(new Cow("burenka"));
+
+        fillCarnivorousAviary();
+        fillHerbivoreAviary();
+
 
     }
 
