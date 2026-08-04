@@ -1,8 +1,6 @@
 package model;
 
 import animals.Animal;
-import animals.Carnivorous;
-import animals.Herbivore;
 
 import java.util.HashMap;
 
@@ -11,24 +9,24 @@ public class Aviary <T extends Animal> {
         this.size = size;
     }
     private Size size;
-    private HashMap<String, T> aviaryAnimals = new HashMap<>();
+    private HashMap<String, T> aviaryMap = new HashMap<>();
 
     public void addAnimal(T animal){
         if(animal.getSize() != this.size){
             throw new WrongSizeException("Животное не подходящего размера");
         }
-        aviaryAnimals.put(animal.getName(), (T) animal);
+        aviaryMap.put(animal.getName(), (T) animal);
     }
     public T getAnimal(String name){
-        if(aviaryAnimals.containsKey(name)){
-            return aviaryAnimals.get(name);
+        if(aviaryMap.containsKey(name)){
+            return aviaryMap.get(name);
         } else{
             throw new RuntimeException("no animals like this");
         }
     }
     public boolean removeAnimal(String name){
-        if(aviaryAnimals.containsKey(name)) {
-            aviaryAnimals.remove(name);
+        if(aviaryMap.containsKey(name)) {
+            aviaryMap.remove(name);
             return true;
         }else {
             return false;
