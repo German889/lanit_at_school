@@ -3,7 +3,7 @@ package employee;
 import animals.Animal;
 import animals.Voice;
 import food.Food;
-import model.WrongFoodException;
+import food.WrongFoodException;
 
 public class Worker {
     public void feed(Animal animal, Food food){

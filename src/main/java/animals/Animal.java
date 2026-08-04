@@ -2,7 +2,7 @@ package animals;
 
 import food.Food;
 import model.Size;
-import model.WrongFoodException;
+import food.WrongFoodException;
 
 public abstract class Animal {
     public Animal(){}

@@ -3,7 +3,7 @@ package animals;
 import food.Food;
 import food.Meat;
 import model.Size;
-import model.WrongFoodException;
+import food.WrongFoodException;
 
 public class Kotik extends Carnivorous implements Voice, Run{
 

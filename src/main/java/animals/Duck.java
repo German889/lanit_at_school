@@ -3,7 +3,7 @@ package animals;
 import food.Food;
 import food.Grass;
 import model.Size;
-import model.WrongFoodException;
+import food.WrongFoodException;
 
 public class Duck extends Herbivore implements Voice, Fly, Swim, Run{
     public Duck(){}
