@@ -61,6 +61,12 @@ public class Zoo {
     private static void fillHerbivoreAviary(){
 
     }
+    private static Carnivorous getCarnivorous(String name){
+        return null;
+    }
+    private static Herbivore getHerbivore(String name){
+        return null;
+    }
 
     public static Swim[] createPond(){
         Swim[] swimmable = new Swim[10];
