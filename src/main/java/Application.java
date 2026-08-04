@@ -1,5 +1,7 @@
 import animals.Kotik;
 
+import java.util.Objects;
+
 public class Application {
     public static void main(String[] args) {
         Kotik black = new Kotik("black","meoooow",2,3);
@@ -20,6 +22,6 @@ public class Application {
         System.out.println(Kotik.getCount());
     }
     public static boolean compareVoice(Kotik kotik1, Kotik kotik2){
-        return kotik1.getVoice().equals(kotik2.getVoice());
+        return Objects.equals(kotik1.getVoice(), kotik2.getVoice());
     }
 }
