@@ -10,6 +10,8 @@ import static io.restassured.RestAssured.given;
 
 public class UpdateTicketTest extends BaseTest {
 
+    private final CreateTicketTest helper = new CreateTicketTest();
+
     @Test
     public void updateTicketTest() {
         int ticketId = createClosedTicket();
@@ -17,7 +19,7 @@ public class UpdateTicketTest extends BaseTest {
         Ticket openBody = getTicket(ticketId);
         openBody.setStatus(Status.OPEN.getCode());
 
-        updateTicketNegative(ticketId, openBody);
+        updateTicketNegative(openBody);
 
         Ticket after = getTicket(ticketId);
         Assert.assertEquals(after.getStatus(), Integer.valueOf(Status.CLOSED.getCode()),
@@ -39,15 +41,13 @@ public class UpdateTicketTest extends BaseTest {
                     .put("/api/tickets/{id}", ticketId)
                     .then()
                     .statusCode(200);
-
-            Ticket closed = getTicket(ticketId);
-            Assert.assertEquals(closed.getStatus(), Integer.valueOf(Status.CLOSED.getCode()),
-                    "Не удалось закрыть тикет подготовительным шагом");
         }
         return ticketId;
     }
 
-    private void updateTicketNegative(int ticketId, Ticket ticket) {
+    public void updateTicketNegative(Ticket ticket) {
+        int ticketId = ticket.getId();
+
         Response response = given()
                 .header("Authorization", getAuthorizationHeader())
                 .body(ticket)
@@ -64,7 +64,10 @@ public class UpdateTicketTest extends BaseTest {
 
         Assert.assertEquals(response.getStatusCode(), 422,
                 "Ожидалась ошибка 422 (запрещённый переход Closed -> Open), но получен код: "
-                        + response.getStatusCode()
-                        + ". Тело ответа: " + body);
+                        + response.getStatusCode());
+    }
+
+    protected Ticket getTicket(int id) {
+        return helper.getTicket(id);
     }
 }

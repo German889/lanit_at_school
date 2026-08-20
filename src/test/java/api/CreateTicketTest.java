@@ -1,10 +1,12 @@
 package api;
 
+import io.restassured.response.Response;
 import model.Status;
 import model.Ticket;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static io.restassured.RestAssured.given;
 
 public class CreateTicketTest extends BaseTest {
 
@@ -16,8 +18,6 @@ public class CreateTicketTest extends BaseTest {
         String expectedTitle = newTicket.getTitle();
         Integer expectedQueue = newTicket.getQueue();
 
-        System.out.println("Создаём тикет: " + expectedTitle);
-
         Ticket createdTicket = createTicket(newTicket);
 
         Assert.assertNotNull(createdTicket.getId(),
@@ -25,13 +25,10 @@ public class CreateTicketTest extends BaseTest {
         Assert.assertNotNull(createdTicket.getCreated(),
                 "Поле 'created' не было установлено сервером");
 
-        System.out.println("Тикет успешно создан. ID = " + createdTicket.getId());
-
         Ticket retrievedTicket = getTicket(createdTicket.getId());
 
         Assert.assertNotNull(retrievedTicket,
                 "Тикет с ID " + createdTicket.getId() + " не был найден в системе");
-
         Assert.assertEquals(retrievedTicket.getId(), createdTicket.getId(),
                 "ID тикета не совпадает");
         Assert.assertEquals(retrievedTicket.getTitle(), expectedTitle,
@@ -40,8 +37,29 @@ public class CreateTicketTest extends BaseTest {
                 "Очередь тикета изменилась");
         Assert.assertEquals(retrievedTicket.getPriority(), Integer.valueOf(testPriority),
                 "Приоритет тикета изменился");
-
-        System.out.println("Тикет успешно найден и проверен: " + retrievedTicket);
     }
 
+    public Ticket getTicket(int id) {
+        Response response = given()
+                .pathParam("id", id)
+                .when()
+                .get("/api/tickets/{id}");
+
+        if (response.getStatusCode() == 401) {
+            response = given()
+                    .header("Authorization", getAuthorizationHeader())
+                    .pathParam("id", id)
+                    .when()
+                    .get("/api/tickets/{id}");
+        }
+
+        if (response.getStatusCode() == 404) {
+            return null;
+        }
+
+        Assert.assertEquals(response.getStatusCode(), 200,
+                "Неожиданный код ответа при получении тикета: " + response.getStatusCode());
+
+        return response.as(Ticket.class);
+    }
 }
