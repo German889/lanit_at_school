@@ -27,15 +27,20 @@ public class LoginPage extends HelpdeskBasePage {
      * Так как в HelpdeskUITest они загружены в System.properties, читаем их оттуда.
      */
     /**
-     * Авторизация пользователя
+     * Авторизация пользователя.
+     * Если параметры не переданы, данные берутся из конфигурационного файла user.properties.
      *
      * @param user     логин пользователя
      * @param password пароль пользователя
      */
     @Step("Авторизация пользователя")
     public LoginPage login(String user, String password) {
-        setUser(user);
-        setPassword(password);
+        // Если параметры пустые, читаем из конфигурационного файла
+        String actualUser = (user != null && !user.isEmpty()) ? user : System.getProperty("user.name");
+        String actualPassword = (password != null && !password.isEmpty()) ? password : System.getProperty("user.password");
+
+        setUser(actualUser);
+        setPassword(actualPassword);
         clickOnLoginButton();
         return this;
     }
