@@ -35,12 +35,8 @@ public class LoginPage extends HelpdeskBasePage {
      */
     @Step("Авторизация пользователя")
     public LoginPage login(String user, String password) {
-        // Если параметры пустые, читаем из конфигурационного файла
-        String actualUser = (user != null && !user.isEmpty()) ? user : System.getProperty("user.name");
-        String actualPassword = (password != null && !password.isEmpty()) ? password : System.getProperty("user.password");
-
-        setUser(actualUser);
-        setPassword(actualPassword);
+        setUser(user);
+        setPassword(password);
         clickOnLoginButton();
         return this;
     }
