@@ -52,7 +52,9 @@ public class HelpdeskUITest {
 
         viewPage.mainMenu().clickOnLogInButton();
         LoginPage loginPage = new LoginPage();
-        loginPage.login();
+        String userName = System.getProperty("user.name");
+        String userPassword = System.getProperty("user.password");
+        loginPage.login(userName, userPassword);
         Assert.assertEquals(mainPage.mainMenu().loginedUser().trim(), "admin", "Имя пользователя не отображается на кнопке после логина");
 
         mainPage.mainMenu().searchTicket(ticket);
