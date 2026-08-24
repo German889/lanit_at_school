@@ -1,0 +1,8 @@
+{
+  "title": "${ticketTitle}",
+  "description": "Automated test ticket with high priority",
+  "status": 1,
+  "priority": 1,
+  "queue": 1,
+  "submitter_email": "test@example.com"
+}
