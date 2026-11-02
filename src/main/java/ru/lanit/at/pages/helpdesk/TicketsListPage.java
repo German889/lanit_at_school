@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$x;
 @Name(value = "Страница списка тикетов")
 public class TicketsListPage extends WebPage {
 
-    // === Секция Filters ===
+
     @Name("Выпадающий список сортировки")
     private SelenideElement sortSelect = $(By.id("id_sortx"));
 
@@ -26,7 +26,6 @@ public class TicketsListPage extends WebPage {
     @Name("Кнопка применить фильтры")
     private SelenideElement applyFiltersBtn = $x("//input[@value='Apply Filters']");
 
-    // === Секция Save Query ===
     @Name("Кнопка раскрытия сохранения запроса")
     private SelenideElement expandSaveQueryBtn = $x("//button[@data-target='#collapseTwo']");
 
@@ -39,7 +38,6 @@ public class TicketsListPage extends WebPage {
     @Name("Кнопка сохранить запрос")
     private SelenideElement saveQueryBtn = $x("//form[@action='/save_query/']//input[@value='Save Query']");
 
-    // === Секция Use Saved Query ===
     @Name("Выпадающий список сохраненных запросов")
     private SelenideElement savedQueriesSelect = $(By.id("id_query_selector"));
 
